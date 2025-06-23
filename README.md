@@ -47,6 +47,8 @@ namespace Asp.NetCore_Identity_Auth.Database
 
 ### 3. Register the required Identity authentication configurations, DbContext setup, and necessary middleware inside the Program.cs file.
 
+Here is the code for the DbContext Set up.
+
 ```csharp
 builder.Services.AddDbContext<_DbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("database")));
 ```
@@ -324,7 +326,7 @@ update-database
 <br>
 
 
-### 6. Create a controller that will contain all the logic and functionality for handling login, authentication, and authorization.
+### 7. Create a controller that will contain all the logic and functionality for handling login, authentication, and authorization.
 
 
 ![Step 1](controllers.png)
