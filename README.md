@@ -1,5 +1,5 @@
 # Asp.Net-Core-Authentication
-Login registration  using built in  Asp.Net Core Identity  Authentication &amp; Authorization
+Login and registration using the built-in ASP.NET Core Identity for authentication and authorization.
 
 <br>
 
