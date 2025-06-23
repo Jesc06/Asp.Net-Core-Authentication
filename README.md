@@ -45,8 +45,7 @@ namespace Asp.NetCore_Identity_Auth.Database
 <br>
 
 
-### 3. Register the following Identity Auth configurations, DbContext configuration and middleware needed inside the Program.cs file.
-Here is the code for the DbContext configuration.
+### 3. Register the required Identity authentication configurations, DbContext setup, and necessary middleware inside the Program.cs file.
 
 ```csharp
 builder.Services.AddDbContext<_DbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("database")));
