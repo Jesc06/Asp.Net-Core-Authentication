@@ -297,10 +297,6 @@ update-database
 ```cshtml
 @model ChangePasswordViewModel
 
-@{
-    Layout = "~/Views/Shared/_Account.cshtml";
-}
-
 
 <form asp-controller="Account" asp-action="Trying_ChangePassword" method="post">
 
