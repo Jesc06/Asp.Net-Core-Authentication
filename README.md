@@ -172,7 +172,7 @@ namespace Asp.NetCore_Identity_Auth.ViewModels
 
 
         [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; } = false;   
+        public bool RememberMe { get; set; }   
 
     } 
 }
