@@ -4,6 +4,9 @@ Login and registration using the built-in ASP.NET Core Identity for authenticati
 <br>        
   
 ### 1. Create a model class inside the Models folder.
+
+![Step 1](ModelName.png)
+
 ```csharp 
 
 using Microsoft.AspNetCore.Identity;
@@ -492,6 +495,109 @@ namespace Asp.NetCore_Identity_Auth.Controllers
 }
 
 ```
+
+
+<br>
+<br>
+<br>
+
+
+
+# Logout and NoCache method
+
+
+<br>
+<br>
+
+Go to your Controller Authenticated page and configure this steps
+
+```csharp
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using User_Data_Access.Models;
+using User_Data_Access.Filters;
+using Microsoft.AspNetCore.Authorization;
+
+namespace User_Data_Access.Controllers
+{
+
+    //Apply the [Authorize] and [NoCache] attributes for security at the top of the controller class name. 
+    [Authorize]
+    [NoCache]//this is a custom class
+
+    public class DashboardController : Controller
+    {
+        public readonly SignInManager<User> signInManager;
+        public readonly UserManager<User> userManager;
+        public DashboardController(SignInManager<User> _signInManager, UserManager<User> _userManager) 
+        { 
+            signInManager = _signInManager;
+            userManager = _userManager;
+        }
+
+
+
+        public IActionResult Dashboard()
+        {
+            //this is method for when user loging out the page direct to the login page and cannot back to the dashboard page
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            return View();
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Login","Login");
+        }
+
+
+    }
+}
+
+```
+
+<br>
+
+### This is the method how to create a [NoCache] filters
+
+<br>
+
+Create a folder in your project named Filters, and inside that folder, create a class named NoCacheAttribute
+
+![Step 1](filter.png)
+
+```csharp
+using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace User_Data_Access.Filters
+{
+    public class NoCacheAttribute : ActionFilterAttribute
+    {
+        public override void OnResultExecuting(ResultExecutingContext context)
+        {
+            var response = context.HttpContext.Response;
+
+            response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+            response.Headers["Pragma"] = "no-cache";
+            response.Headers["Expires"] = "0";
+
+            base.OnResultExecuting(context);
+        }
+    }
+}
+
+```
+
+
+
+
 
 
 
