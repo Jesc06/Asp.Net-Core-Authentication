@@ -503,6 +503,67 @@ namespace Asp.NetCore_Identity_Auth.Controllers
 
 
 
+
+
+# Method if no User custon added class
+
+This is the method if you have no custom properties added to the User model.
+
+<br>
+
+### before
+
+```csharp
+builder.Services.AddIdentity<Users, IdentityRole>(option =>
+{
+    option.Password.RequireDigit = false;
+    option.Password.RequireLowercase = false;
+    option.Password.RequireUppercase = false;
+    option.Password.RequireNonAlphanumeric = false;
+    option.Password.RequiredLength = 3;
+
+    option.User.RequireUniqueEmail = true; 
+    option.SignIn.RequireConfirmedEmail = false;
+
+})
+    .AddEntityFrameworkStores<_DbContext>()
+    .AddDefaultTokenProviders();  
+```
+
+<br>
+
+### after no Model User custom Properties
+
+```csharp
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(option =>
+{
+    option.Password.RequireDigit = false;
+    option.Password.RequireLowercase = false;
+    option.Password.RequireUppercase = false;
+    option.Password.RequireNonAlphanumeric = false;
+    option.Password.RequiredLength = 3;
+
+    option.User.RequireUniqueEmail = true; 
+    option.SignIn.RequireConfirmedEmail = false;
+
+})
+    .AddEntityFrameworkStores<_DbContext>()
+    .AddDefaultTokenProviders();  
+```
+
+<br>
+
+This method is used when no custom properties are added to your Identity authentication setup.
+
+
+
+
+
+<br>
+<br>
+<br>
+
+
 # Logout and NoCache method
 
 
