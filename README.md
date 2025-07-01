@@ -5,7 +5,7 @@ Login and registration using the built-in ASP.NET Core Identity for authenticati
   
 ### 1. Create a model class inside the Models folder.
 
-![Step 1](ModelName.png)
+![Step 1](ModelName.png) 
 
 ```csharp 
 
