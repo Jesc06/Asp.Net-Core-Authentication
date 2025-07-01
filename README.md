@@ -1,6 +1,6 @@
 # Asp.Net-Core-Authentication
 Login and registration using the built-in ASP.NET Core Identity for authentication and authorization.
-    
+     
 <br>        
   
 ### 1. Create a model class inside the Models folder.
