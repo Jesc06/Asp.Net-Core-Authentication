@@ -1,5 +1,7 @@
 # Asp.Net-Core-Authentication
 Login and registration using the built-in ASP.NET Core Identity for authentication and authorization.
+
+Implementing NoCache atribute
      
 <br>        
   
